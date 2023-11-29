@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.Linq.Expressions;
 
-namespace Dal.FluentApiCustom
+namespace Dal.EfExtensions
 {
     public static class EntityBuilderExtension
     {
@@ -30,7 +30,16 @@ namespace Dal.FluentApiCustom
 
             string sqlStringValues = string.Join(",", allowedValues.Select(x => escape ? $"'{x}'" : x.ToString()));
 
-            entityTypeBuilder.ToTable(x => x.HasCheckConstraint($"CK_{tableName}_{columnName}_Has_Allowed_Values", $"[{columnName} in ({sqlStringValues})]"));
+            entityTypeBuilder.ToTable(x => x.HasCheckConstraint($"CK_{tableName}_{columnName}_Has_Allowed_Values", $"\"{columnName}\" in ({sqlStringValues})"));
+        }
+
+        public static void HasPositiveCheckConstraint<TEntity>(this EntityTypeBuilder<TEntity> entityTypeBuilder, Expression<Func<TEntity, decimal>> property)
+            where TEntity : class
+        {
+            string tableName = entityTypeBuilder.Metadata.GetTableName();
+            string columnName = entityTypeBuilder.Property(property).Metadata.GetColumnName();
+
+            entityTypeBuilder.ToTable(x => x.HasCheckConstraint($"CK_{tableName}_{columnName}_Is_Positive", $"\"{columnName}\" > 0"));
         }
     }
 }

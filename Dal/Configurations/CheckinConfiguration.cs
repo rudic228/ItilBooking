@@ -1,11 +1,7 @@
-﻿using Dal.Entities;
+﻿using Dal.EfExtensions;
+using Dal.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dal.Configurations
 {
@@ -26,6 +22,7 @@ namespace Dal.Configurations
             builder.Property(x => x.Price)
                 .HasPrecision(16, 2);
 
+            builder.HasPositiveCheckConstraint(x => x.Price);
         }
     }
 }
