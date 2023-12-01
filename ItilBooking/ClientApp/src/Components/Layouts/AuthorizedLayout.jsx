@@ -31,7 +31,11 @@ const AuthorizedLayout = ({ children, logout }) => {
                         <span>Create</span>
                         <Link to="/create" />
                     </Menu.Item>
-                    <Menu.Item key="4" onClick={() => { logout(); }}>
+                    <Menu.Item key="4">
+                        <span>Rooms</span>
+                        <Link to="/roomsList" />
+                    </Menu.Item>
+                    <Menu.Item key="5" onClick={() => { logout(); }}>
                         <span>Logout</span>
                     </Menu.Item>
                 </Menu>

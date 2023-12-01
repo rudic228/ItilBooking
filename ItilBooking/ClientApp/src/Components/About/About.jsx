@@ -16,12 +16,12 @@ const About = () => {
                 <br />You can use it to create short version of your URL.
                 <br />Login or Register to access the ability to create shortened links.
             </label>
-            
+
             <Button type="primary" block onClick={() => {
-                    api.get('/weatherforecast/test', {withCredentials: false}).then((res) => {alert("Внутри") ; navigate('/login') }).catch((error) => { console.log(error) });
-                }} style={{ marginTop: "5px" }}>
-                    TEST
-                </Button>
+                api.get('/weatherforecast/test', { withCredentials: false }).then((res) => { alert("Внутри"); navigate('/login') }).catch((error) => { console.log(error) });
+            }} style={{ marginTop: "5px" }}>
+                TEST
+            </Button>
         </div >
     );
 }

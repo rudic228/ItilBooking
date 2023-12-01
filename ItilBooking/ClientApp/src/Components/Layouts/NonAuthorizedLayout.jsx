@@ -26,6 +26,10 @@ const NonAuthorizedLayout = ({ children }) => {
                         <Link to="/login" />
                     </Menu.Item>
                     <Menu.Item key="4">
+                        <span>Rooms</span>
+                        <Link to="/rooms" />
+                    </Menu.Item>
+                    <Menu.Item key="5">
                         <span>Register</span>
                         <Link to="/register" />
                     </Menu.Item>

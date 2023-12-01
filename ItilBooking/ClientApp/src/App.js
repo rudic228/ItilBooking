@@ -11,6 +11,7 @@ import Register from './Components/Register/Register';
 import store from './data/Store'
 import { Provider, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import RoomList from './Components/Rooms/RoomList';
 
 function App() {
   let test = store.getState();
@@ -26,6 +27,7 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/login" element={<Navigate to="/" replace />} />
                   <Route path="/create" element={<CreateLink />} />
+                  <Route path="/rooms" element={<RoomList />} />
                   <Route path="/details/:id" element={<Details />} />
                   <Route path="*" element={<MainPage />} />
                 </Routes>
@@ -36,6 +38,7 @@ function App() {
                   <Route path="/about" element={<About />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/rooms" element={<RoomList />} />
                   <Route path="*" element={<MainPage />} />
                 </Routes>
               </NonAuthorizedLayout>
