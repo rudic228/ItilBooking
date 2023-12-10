@@ -10,6 +10,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbSeeding", "DbSeeding\DbSeeding.csproj", "{14DD8F98-17C4-4DA8-AED1-B550E45C7851}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototipView", "Prototip\PrototipView.csproj", "{774CF53E-E135-4E47-96B6-781B36EFF77F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A4F35897-8B30-4D99-BE72-D2CEC9A03B34} = {A4F35897-8B30-4D99-BE72-D2CEC9A03B34}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
