@@ -6,9 +6,11 @@ namespace Dal
 {
     public class Context : DbContext
     {
+        public Context()
+            : base() { }
 
-        //public Context(DbContextOptions<Context> options)
-        //    : base(options) { }
+        public Context(DbContextOptions<Context> options)
+            : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
