@@ -6,10 +6,12 @@ namespace Dal
 {
     public class Context : DbContext
     {
+        public Context()
+            : base() { }
 
-        //public Context(DbContextOptions<Context> options)
-        //    : base(options) { }
-        //f
+        public Context(DbContextOptions<Context> options)
+            : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ItilBooking;Username=postgres;Password=7076;Include Error Detail=true;");
