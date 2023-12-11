@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            Id = new DataGridViewTextBoxColumn();
-            FIO = new DataGridViewTextBoxColumn();
-            Room = new DataGridViewTextBoxColumn();
-            StartDate = new DataGridViewTextBoxColumn();
-            EndDate = new DataGridViewTextBoxColumn();
             buttonBook = new Button();
             buttonAdd = new Button();
             buttonDel = new Button();
@@ -46,45 +41,15 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, FIO, Room, StartDate, EndDate });
             dataGridView1.Location = new Point(13, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(684, 480);
+            dataGridView1.Size = new Size(651, 480);
             dataGridView1.TabIndex = 0;
-            // 
-            // Id
-            // 
-            Id.HeaderText = "Id";
-            Id.Name = "Id";
-            Id.Visible = false;
-            // 
-            // FIO
-            // 
-            FIO.HeaderText = "ФИО";
-            FIO.Name = "FIO";
-            FIO.Width = 300;
-            // 
-            // Room
-            // 
-            Room.HeaderText = "Комната";
-            Room.Name = "Room";
-            // 
-            // StartDate
-            // 
-            StartDate.HeaderText = "Дата Начала";
-            StartDate.Name = "StartDate";
-            StartDate.Width = 120;
-            // 
-            // EndDate
-            // 
-            EndDate.HeaderText = "Дата Конца";
-            EndDate.Name = "EndDate";
-            EndDate.Width = 120;
             // 
             // buttonBook
             // 
-            buttonBook.Location = new Point(1, 1);
+            buttonBook.Location = new Point(0, 1);
             buttonBook.Name = "buttonBook";
             buttonBook.Size = new Size(144, 45);
             buttonBook.TabIndex = 1;
@@ -128,7 +93,7 @@
             groupBox1.Controls.Add(buttonDel);
             groupBox1.Controls.Add(buttonAdd);
             groupBox1.Controls.Add(buttonBook);
-            groupBox1.Location = new Point(703, 12);
+            groupBox1.Location = new Point(670, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(145, 160);
             groupBox1.TabIndex = 5;
@@ -139,7 +104,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 504);
+            ClientSize = new Size(829, 504);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Name = "FormMain";
@@ -163,5 +128,6 @@
         private Button buttonDel;
         private Button buttonRef;
         private GroupBox groupBox1;
+        private DataGridViewTextBoxColumn RoomId;
     }
 }

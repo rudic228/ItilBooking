@@ -36,18 +36,18 @@
             label6 = new Label();
             dateTimePickerStart = new DateTimePicker();
             dateTimePickerEnd = new DateTimePicker();
-            textBoxRoom = new TextBox();
             textBoxSum = new TextBox();
             textBoxFIO = new TextBox();
             comboBoxFIO = new ComboBox();
             buttonOK = new Button();
             buttonCheck = new Button();
+            comboBoxNumber = new ComboBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(12, 15);
             label1.Name = "label1";
             label1.Size = new Size(34, 15);
             label1.TabIndex = 0;
@@ -56,7 +56,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 39);
+            label2.Location = new Point(13, 15);
             label2.Name = "label2";
             label2.Size = new Size(34, 15);
             label2.TabIndex = 1;
@@ -65,7 +65,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 68);
+            label3.Location = new Point(12, 44);
             label3.Name = "label3";
             label3.Size = new Size(45, 15);
             label3.TabIndex = 2;
@@ -74,7 +74,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 93);
+            label4.Location = new Point(12, 69);
             label4.Name = "label4";
             label4.Size = new Size(45, 15);
             label4.TabIndex = 3;
@@ -83,7 +83,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 125);
+            label5.Location = new Point(12, 101);
             label5.Name = "label5";
             label5.Size = new Size(76, 15);
             label5.TabIndex = 4;
@@ -92,7 +92,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 151);
+            label6.Location = new Point(12, 127);
             label6.Name = "label6";
             label6.Size = new Size(69, 15);
             label6.TabIndex = 5;
@@ -100,35 +100,28 @@
             // 
             // dateTimePickerStart
             // 
-            dateTimePickerStart.Location = new Point(94, 119);
+            dateTimePickerStart.Location = new Point(94, 95);
             dateTimePickerStart.Name = "dateTimePickerStart";
             dateTimePickerStart.Size = new Size(252, 23);
             dateTimePickerStart.TabIndex = 6;
             // 
             // dateTimePickerEnd
             // 
-            dateTimePickerEnd.Location = new Point(94, 148);
+            dateTimePickerEnd.Location = new Point(94, 124);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
             dateTimePickerEnd.Size = new Size(252, 23);
             dateTimePickerEnd.TabIndex = 7;
             // 
-            // textBoxRoom
-            // 
-            textBoxRoom.Location = new Point(63, 90);
-            textBoxRoom.Name = "textBoxRoom";
-            textBoxRoom.Size = new Size(283, 23);
-            textBoxRoom.TabIndex = 8;
-            // 
             // textBoxSum
             // 
-            textBoxSum.Location = new Point(63, 65);
+            textBoxSum.Location = new Point(63, 41);
             textBoxSum.Name = "textBoxSum";
             textBoxSum.Size = new Size(283, 23);
             textBoxSum.TabIndex = 9;
             // 
             // textBoxFIO
             // 
-            textBoxFIO.Location = new Point(52, 36);
+            textBoxFIO.Location = new Point(52, 12);
             textBoxFIO.Name = "textBoxFIO";
             textBoxFIO.Size = new Size(294, 23);
             textBoxFIO.TabIndex = 10;
@@ -136,14 +129,14 @@
             // comboBoxFIO
             // 
             comboBoxFIO.FormattingEnabled = true;
-            comboBoxFIO.Location = new Point(52, 6);
+            comboBoxFIO.Location = new Point(52, 12);
             comboBoxFIO.Name = "comboBoxFIO";
             comboBoxFIO.Size = new Size(294, 23);
             comboBoxFIO.TabIndex = 11;
             // 
             // buttonOK
             // 
-            buttonOK.Location = new Point(13, 187);
+            buttonOK.Location = new Point(13, 163);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new Size(75, 23);
             buttonOK.TabIndex = 12;
@@ -153,7 +146,7 @@
             // 
             // buttonCheck
             // 
-            buttonCheck.Location = new Point(271, 187);
+            buttonCheck.Location = new Point(271, 163);
             buttonCheck.Name = "buttonCheck";
             buttonCheck.Size = new Size(75, 23);
             buttonCheck.TabIndex = 13;
@@ -161,17 +154,27 @@
             buttonCheck.UseVisualStyleBackColor = true;
             buttonCheck.Click += buttonCheck_Click;
             // 
+            // comboBoxNumber
+            // 
+            comboBoxNumber.FormattingEnabled = true;
+            comboBoxNumber.Location = new Point(63, 69);
+            comboBoxNumber.Name = "comboBoxNumber";
+            comboBoxNumber.Size = new Size(283, 23);
+            comboBoxNumber.TabIndex = 14;
+            // 
             // FormAdd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(358, 222);
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(358, 195);
+            Controls.Add(comboBoxNumber);
             Controls.Add(buttonCheck);
             Controls.Add(buttonOK);
             Controls.Add(comboBoxFIO);
             Controls.Add(textBoxFIO);
             Controls.Add(textBoxSum);
-            Controls.Add(textBoxRoom);
             Controls.Add(dateTimePickerEnd);
             Controls.Add(dateTimePickerStart);
             Controls.Add(label6);
@@ -196,11 +199,11 @@
         private Label label6;
         private DateTimePicker dateTimePickerStart;
         private DateTimePicker dateTimePickerEnd;
-        private TextBox textBoxRoom;
         private TextBox textBoxSum;
         private TextBox textBoxFIO;
         private ComboBox comboBoxFIO;
         private Button buttonOK;
         private Button buttonCheck;
+        private ComboBox comboBoxNumber;
     }
 }

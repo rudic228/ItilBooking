@@ -1,3 +1,5 @@
+using Npgsql;
+
 namespace MenegerView
 {
     internal static class Program
@@ -12,6 +14,10 @@ namespace MenegerView
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FormEnter());
+
+            //String connectionString = "Host=localhost;Port=5432;Database=ItilBooking;Username=postgres;Password=1111;Include Error Detail=true;";
+            //NpgsqlConnection npgsqlConnection = new NpgsqlConnection(connectionString);
+            //npgsqlConnection.Open();
         }
     }
 }
