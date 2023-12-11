@@ -9,10 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItilBooking", "ItilBooking\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbSeeding", "DbSeeding\DbSeeding.csproj", "{14DD8F98-17C4-4DA8-AED1-B550E45C7851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototipView", "Prototip\PrototipView.csproj", "{774CF53E-E135-4E47-96B6-781B36EFF77F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A4F35897-8B30-4D99-BE72-D2CEC9A03B34} = {A4F35897-8B30-4D99-BE72-D2CEC9A03B34}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenegerView", "MenegerView\MenegerView.csproj", "{F92A50A9-81F0-4952-B4AA-FD81A35F0FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +29,10 @@ Global
 		{14DD8F98-17C4-4DA8-AED1-B550E45C7851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DD8F98-17C4-4DA8-AED1-B550E45C7851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DD8F98-17C4-4DA8-AED1-B550E45C7851}.Release|Any CPU.Build.0 = Release|Any CPU
-		{774CF53E-E135-4E47-96B6-781B36EFF77F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{774CF53E-E135-4E47-96B6-781B36EFF77F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{774CF53E-E135-4E47-96B6-781B36EFF77F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{774CF53E-E135-4E47-96B6-781B36EFF77F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92A50A9-81F0-4952-B4AA-FD81A35F0FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92A50A9-81F0-4952-B4AA-FD81A35F0FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92A50A9-81F0-4952-B4AA-FD81A35F0FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92A50A9-81F0-4952-B4AA-FD81A35F0FAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

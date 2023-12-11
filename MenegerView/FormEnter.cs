@@ -1,4 +1,4 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prototip
+namespace MenegerView
 {
     public partial class FormEnter : Form
     {
@@ -16,8 +16,7 @@ namespace Prototip
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonEnter_Click(object sender, EventArgs e)
         {
             if (textBoxLogin.Text == "admin" && textBoxPassword.Text == "admin")
             {
@@ -27,7 +26,7 @@ namespace Prototip
             }
             else
             {
-                MessageBox.Show("РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ", "РћС€РёР±РєР°", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Неправильный логин или пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

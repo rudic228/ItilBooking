@@ -8,20 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Prototip
+namespace MenegerView
 {
-    public partial class FormWork : Form
+    public partial class FormAdd : Form
     {
-        
-        public FormWork(bool New)
+        public FormAdd(bool New)
         {
+            //if (New == true)
+            //{
+            //    comboBoxFIO.Visible = false;
+            //    label1.Visible = false;
+            //}
+            //else { textBoxFIO.Visible = false; label2.Visible = false; }
             InitializeComponent();
-            if(New == true)
-            {
-                comboBox1.Visible = false;
-                label1.Visible = false;
-            }
-            else {  textBox3.Visible = false; label6.Visible = false; }
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -32,7 +31,7 @@ namespace Prototip
             formmain.ShowDialog();
         }
 
-        private void button_Click(object sender, EventArgs e)
+        private void buttonCheck_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Тут открывается форма отчета(чека)", "Отчет", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
