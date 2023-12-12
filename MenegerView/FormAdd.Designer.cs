@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -37,7 +36,6 @@
             dateTimePickerStart = new DateTimePicker();
             dateTimePickerEnd = new DateTimePicker();
             textBoxSum = new TextBox();
-            textBoxFIO = new TextBox();
             comboBoxFIO = new ComboBox();
             buttonOK = new Button();
             buttonCheck = new Button();
@@ -52,15 +50,6 @@
             label1.Size = new Size(34, 15);
             label1.TabIndex = 0;
             label1.Text = "ФИО";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(13, 15);
-            label2.Name = "label2";
-            label2.Size = new Size(34, 15);
-            label2.TabIndex = 1;
-            label2.Text = "ФИО";
             // 
             // label3
             // 
@@ -119,13 +108,6 @@
             textBoxSum.Size = new Size(283, 23);
             textBoxSum.TabIndex = 9;
             // 
-            // textBoxFIO
-            // 
-            textBoxFIO.Location = new Point(52, 12);
-            textBoxFIO.Name = "textBoxFIO";
-            textBoxFIO.Size = new Size(294, 23);
-            textBoxFIO.TabIndex = 10;
-            // 
             // comboBoxFIO
             // 
             comboBoxFIO.FormattingEnabled = true;
@@ -161,6 +143,7 @@
             comboBoxNumber.Name = "comboBoxNumber";
             comboBoxNumber.Size = new Size(283, 23);
             comboBoxNumber.TabIndex = 14;
+            comboBoxNumber.SelectedIndexChanged += comboBoxNumber_SelectedIndexChanged;
             // 
             // FormAdd
             // 
@@ -173,7 +156,6 @@
             Controls.Add(buttonCheck);
             Controls.Add(buttonOK);
             Controls.Add(comboBoxFIO);
-            Controls.Add(textBoxFIO);
             Controls.Add(textBoxSum);
             Controls.Add(dateTimePickerEnd);
             Controls.Add(dateTimePickerStart);
@@ -181,7 +163,6 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormAdd";
             Text = "FormAdd";
@@ -192,7 +173,6 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
@@ -200,10 +180,9 @@
         private DateTimePicker dateTimePickerStart;
         private DateTimePicker dateTimePickerEnd;
         private TextBox textBoxSum;
-        private TextBox textBoxFIO;
-        private ComboBox comboBoxFIO;
         private Button buttonOK;
         private Button buttonCheck;
         private ComboBox comboBoxNumber;
+        public ComboBox comboBoxFIO;
     }
 }

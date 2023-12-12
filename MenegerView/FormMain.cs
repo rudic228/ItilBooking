@@ -30,7 +30,7 @@ namespace MenegerView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            FormAdd formwork = new FormAdd(true);
+            FormAddUser formwork = new FormAddUser();
             formwork.ShowDialog();
         }
 
@@ -54,7 +54,7 @@ namespace MenegerView
 
         private void buttonRef_Click(object sender, EventArgs e)
         {
-            FormAdd formwork = new FormAdd(true);
+            FormAdd formwork = new FormAdd(false);
             formwork.ShowDialog();
         }
         private void LoadData()
