@@ -77,10 +77,10 @@ namespace MenegerView
             LoadData();
             var check = context.Checkins
                 .Where(x => x.EndCheckinDate < DateTime.Today)
-                .FirstOrDefault();
-            if (check != null)
+                .ToList();
+            if (!check.Any())
             {
-                context.Checkins.Remove(check);
+                context.Checkins.RemoveRange(check);
                 context.SaveChanges();
             }
         }
