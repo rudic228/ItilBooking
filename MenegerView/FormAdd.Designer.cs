@@ -165,7 +165,7 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Name = "FormAdd";
-            Text = "FormAdd";
+            Text = "Заселение";
             ResumeLayout(false);
             PerformLayout();
         }

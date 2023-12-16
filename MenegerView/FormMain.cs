@@ -84,5 +84,10 @@ namespace MenegerView
                 context.SaveChanges();
             }
         }
+
+        private void buttonRefForm_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }

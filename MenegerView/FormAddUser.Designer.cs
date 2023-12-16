@@ -148,7 +148,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormAddUser";
-            Text = "FormAddUser";
+            Text = "Создание человека";
             ResumeLayout(false);
             PerformLayout();
         }

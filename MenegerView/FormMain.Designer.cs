@@ -34,6 +34,7 @@
             buttonDel = new Button();
             buttonRef = new Button();
             groupBox1 = new GroupBox();
+            buttonRefForm = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -100,15 +101,26 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
+            // buttonRefForm
+            // 
+            buttonRefForm.Location = new Point(671, 457);
+            buttonRefForm.Name = "buttonRefForm";
+            buttonRefForm.Size = new Size(146, 35);
+            buttonRefForm.TabIndex = 6;
+            buttonRefForm.Text = "Обновить форму";
+            buttonRefForm.UseVisualStyleBackColor = true;
+            buttonRefForm.Click += buttonRefForm_Click;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(829, 504);
+            Controls.Add(buttonRefForm);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Name = "FormMain";
-            Text = "FormMain";
+            Text = "Основная форма";
             Load += FormMain_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
@@ -129,5 +141,6 @@
         private Button buttonRef;
         private GroupBox groupBox1;
         private DataGridViewTextBoxColumn RoomId;
+        private Button buttonRefForm;
     }
 }

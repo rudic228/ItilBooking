@@ -86,8 +86,8 @@ namespace MenegerView
             }
             DateTime dt1, dt2;
             TimeSpan delta;
-            dt1 = dateTimePickerStart.Value;
-            dt2 = dateTimePickerEnd.Value;
+            dt1 = dateTimePickerStart.Value.Date;
+            dt2 = dateTimePickerEnd.Value.Date;
             delta = dt2 - dt1;
 
             Checkin checkin = new Checkin

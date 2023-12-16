@@ -75,7 +75,7 @@
             buttonEnter.TabIndex = 4;
             buttonEnter.Text = "Войти";
             buttonEnter.UseVisualStyleBackColor = true;
-            buttonEnter.Click += this.buttonEnter_Click;
+            buttonEnter.Click += buttonEnter_Click;
             // 
             // FormEnter
             // 
@@ -88,7 +88,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormEnter";
-            Text = "FormEnter";
+            Text = "Вход";
             ResumeLayout(false);
             PerformLayout();
         }
