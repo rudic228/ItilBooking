@@ -33,12 +33,12 @@
             label3 = new Label();
             label5 = new Label();
             label6 = new Label();
-            buttonAdd = new Button();
             textBoxName = new TextBox();
             textBoxSurname = new TextBox();
             textBoxLastName = new TextBox();
             textBoxPhone = new TextBox();
             textBoxMail = new TextBox();
+            buttonAdd = new Button();
             SuspendLayout();
             // 
             // label1
@@ -86,16 +86,6 @@
             label6.TabIndex = 5;
             label6.Text = "Почта";
             // 
-            // buttonAdd
-            // 
-            buttonAdd.Location = new Point(12, 147);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(259, 23);
-            buttonAdd.TabIndex = 6;
-            buttonAdd.Text = "Добавить";
-            buttonAdd.UseVisualStyleBackColor = true;
-            buttonAdd.Click += buttonAdd_Click;
-            // 
             // textBoxName
             // 
             textBoxName.Location = new Point(49, 6);
@@ -131,17 +121,27 @@
             textBoxMail.Size = new Size(212, 23);
             textBoxMail.TabIndex = 12;
             // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(12, 147);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(253, 23);
+            buttonAdd.TabIndex = 13;
+            buttonAdd.Text = "ОК";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
+            // 
             // FormAddUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(277, 177);
+            Controls.Add(buttonAdd);
             Controls.Add(textBoxMail);
             Controls.Add(textBoxPhone);
             Controls.Add(textBoxLastName);
             Controls.Add(textBoxSurname);
             Controls.Add(textBoxName);
-            Controls.Add(buttonAdd);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label3);
@@ -160,11 +160,11 @@
         private Label label3;
         private Label label5;
         private Label label6;
-        private Button buttonAdd;
         private TextBox textBoxName;
         private TextBox textBoxSurname;
         private TextBox textBoxLastName;
         private TextBox textBoxPhone;
         private TextBox textBoxMail;
+        private Button buttonAdd;
     }
 }
