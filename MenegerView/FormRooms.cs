@@ -74,9 +74,9 @@ namespace MenegerView
         private void comboBoxFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             var unbooked = context.Rooms
-                .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today) && r.Level.ToString() == comboBoxFloor.SelectedIndex.ToString())
+                .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today) && r.Level.ToString() == comboBoxFloor.SelectedItem.ToString())
                 .ToList();
-            if(unbooked == null)
+            if(unbooked.Count == 0)
             {
                 MessageBox.Show("На данном этаже нету свободных номеров", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();

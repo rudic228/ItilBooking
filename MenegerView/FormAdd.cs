@@ -1,6 +1,6 @@
 ﻿using Dal;
 using Dal.Entities;
-using DocumentFormat.OpenXml.Wordprocessing;
+//using DocumentFormat.OpenXml.Wordprocessing;
 using MenegerView.Word;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,9 @@ using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Microsoft.Office.Interop.Word;
+using Application = Microsoft.Office.Interop.Word.Application;
+
 
 namespace MenegerView
 {
@@ -97,8 +100,58 @@ namespace MenegerView
             context.Checkins.Add(checkin);
             context.SaveChanges();
 
+            // Путь к шаблону документа
+            string templatePath = @"..\\курсоваяРабота\\шаблон.doc";
+
+            // Путь к сохраняемому документу
+            string savePath = @"..\\";
+
+            // Создание объекта приложения Word
+            Application wordApp = new Application();
+
+            // Открытие шаблона документа
+            Document doc = wordApp.Documents.Open(templatePath);
+
+            // Замена данных в закладке
+            int rubls = (int)Convert.ToDouble(textBoxSum.Text);
+            double kops = Convert.ToDouble(textBoxSum.Text) - rubls;
+            kops = Math.Round(kops, 2);
+            ReplaceBookmark(doc, "ФИО", textBoxFIO.Text);
+            ReplaceBookmark(doc, "Рубли", rubls.ToString());
+            ReplaceBookmark(doc, "Копейки", kops.ToString());
+            ReplaceBookmark(doc, "День", DateTime.Today.Day.ToString());
+            ReplaceBookmark(doc, "Месяц", DateTime.Today.Month.ToString());
+            ReplaceBookmark(doc, "Год", DateTime.Today.Year.ToString());
+
+            // Сохранение документа
+            doc.SaveAs2(savePath);
+
+            // Закрытие документа и приложения Word
+            doc.Close();
+            wordApp.Quit();
+
             MessageBox.Show("Успешно", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Hide();
         }
+
+        static void ReplaceBookmark(Document doc, string bookmarkName, string replacementText)
+        {
+            if (doc.Bookmarks.Exists(bookmarkName))
+            {
+                // Получение закладки
+                Bookmark bookmark = doc.Bookmarks[bookmarkName];
+
+                // Удаление содержимого закладки
+                bookmark.Range.Delete();
+
+                // Вставка нового текста в закладку
+                bookmark.Range.InsertAfter(replacementText);
+
+                // Добавление закладки вновь вставленному тексту
+                doc.Bookmarks.Add(bookmarkName, bookmark.Range);
+            }
+        }
+
+
     }
 }

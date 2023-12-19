@@ -43,7 +43,14 @@ namespace MenegerView
 
         private void занятыеМестToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormCheckIn formCheckIn = new FormCheckIn();
+            formCheckIn.ShowDialog();
+        }
 
+        private void заселениеИзБронированияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBook formBook = new FormBook();
+            formBook.ShowDialog();
         }
     }
 }

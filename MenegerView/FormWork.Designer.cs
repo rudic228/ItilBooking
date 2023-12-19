@@ -34,10 +34,10 @@
             заселениеИзБронированияToolStripMenuItem = new ToolStripMenuItem();
             создатьНовоеЗаселениеToolStripMenuItem = new ToolStripMenuItem();
             архивToolStripMenuItem = new ToolStripMenuItem();
+            занятыеМестToolStripMenuItem = new ToolStripMenuItem();
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
-            занятыеМестToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -64,6 +64,7 @@
             заселениеИзБронированияToolStripMenuItem.Name = "заселениеИзБронированияToolStripMenuItem";
             заселениеИзБронированияToolStripMenuItem.Size = new Size(283, 26);
             заселениеИзБронированияToolStripMenuItem.Text = "Заселение из бронирования";
+            заселениеИзБронированияToolStripMenuItem.Click += заселениеИзБронированияToolStripMenuItem_Click;
             // 
             // создатьНовоеЗаселениеToolStripMenuItem
             // 
@@ -79,6 +80,14 @@
             архивToolStripMenuItem.Size = new Size(65, 25);
             архивToolStripMenuItem.Text = "Архив";
             архивToolStripMenuItem.Click += архивToolStripMenuItem_Click;
+            // 
+            // занятыеМестToolStripMenuItem
+            // 
+            занятыеМестToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            занятыеМестToolStripMenuItem.Name = "занятыеМестToolStripMenuItem";
+            занятыеМестToolStripMenuItem.Size = new Size(127, 25);
+            занятыеМестToolStripMenuItem.Text = "Занятые места";
+            занятыеМестToolStripMenuItem.Click += занятыеМестToolStripMenuItem_Click;
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -106,14 +115,6 @@
             pictureBox1.Size = new Size(746, 443);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            // 
-            // занятыеМестToolStripMenuItem
-            // 
-            занятыеМестToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            занятыеМестToolStripMenuItem.Name = "занятыеМестToolStripMenuItem";
-            занятыеМестToolStripMenuItem.Size = new Size(127, 25);
-            занятыеМестToolStripMenuItem.Text = "Занятые места";
-            занятыеМестToolStripMenuItem.Click += занятыеМестToolStripMenuItem_Click;
             // 
             // FormWork
             // 
