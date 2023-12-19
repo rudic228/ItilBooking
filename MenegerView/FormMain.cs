@@ -47,7 +47,7 @@ namespace MenegerView
                     context.Checkins.Remove(del);
                     context.SaveChanges();
                     MessageBox.Show("Запись была успешно удалена из базы данных", "Удаление записи", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
+                   // LoadData();
                 }
             }
         }
@@ -57,24 +57,24 @@ namespace MenegerView
             FormAdd formwork = new FormAdd(false);
             formwork.ShowDialog();
         }
-        private void LoadData()
-        {
-            var residents = context.Checkins
-                .Select(x => new CheckInViewModel()
-                {
-                    BeginCheckinDate = x.BeginCheckinDate,
-                    RoomNumber = x.Room.Number,
-                    Id = x.Id,
-                    EndCheckinDate = x.EndCheckinDate,
-                    Price = x.Price,
-                    FullName = x.User.FullName
-                })
-                .ToList();
-            dataGridView1.DataSource = residents;
-        }
+        //private void LoadData()
+        //{
+        //    var residents = context.Checkins
+        //        .Select(x => new UserViewModel()
+        //        {
+        //            BeginCheckinDate = x.BeginCheckinDate,
+        //            RoomNumber = x.Room.Number,
+        //            Id = x.Id,
+        //            EndCheckinDate = x.EndCheckinDate,
+        //            Price = x.Price,
+        //            FullName = x.User.FullName
+        //        })
+        //        .ToList();
+        //    dataGridView1.DataSource = residents;
+        //}
         private void FormMain_Load(object sender, EventArgs e)
         {
-            LoadData();
+            //LoadData();
             var check = context.Checkins
                 .Where(x => x.EndCheckinDate < DateTime.Today)
                 .ToList();
@@ -87,7 +87,7 @@ namespace MenegerView
 
         private void buttonRefForm_Click(object sender, EventArgs e)
         {
-            LoadData();
+            //LoadData();
         }
     }
 }
