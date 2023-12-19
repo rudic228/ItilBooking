@@ -37,13 +37,14 @@
             оПрограммеToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            занятыеМестToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { работаСЗаселениемToolStripMenuItem, архивToolStripMenuItem, оПрограммеToolStripMenuItem, выходToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { работаСЗаселениемToolStripMenuItem, архивToolStripMenuItem, занятыеМестToolStripMenuItem, оПрограммеToolStripMenuItem, выходToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(746, 29);
@@ -106,6 +107,14 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
+            // занятыеМестToolStripMenuItem
+            // 
+            занятыеМестToolStripMenuItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            занятыеМестToolStripMenuItem.Name = "занятыеМестToolStripMenuItem";
+            занятыеМестToolStripMenuItem.Size = new Size(127, 25);
+            занятыеМестToolStripMenuItem.Text = "Занятые места";
+            занятыеМестToolStripMenuItem.Click += занятыеМестToolStripMenuItem_Click;
+            // 
             // FormWork
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -133,5 +142,6 @@
         private ToolStripMenuItem оПрограммеToolStripMenuItem;
         private ToolStripMenuItem выходToolStripMenuItem;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem занятыеМестToolStripMenuItem;
     }
 }

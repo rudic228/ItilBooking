@@ -36,7 +36,7 @@ namespace MenegerView
                 .ToList();
             dataGridView1.DataSource = oldcheck;
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[5].Width = 250;
+            dataGridView1.Columns[1].Width = 250;
         }
 
         private void FormArchive_Load(object sender, EventArgs e)

@@ -64,6 +64,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(245, 23);
             textBox1.TabIndex = 2;
+            textBox1.TextChanged += buttonSearch_Click;
             // 
             // buttonSearch
             // 

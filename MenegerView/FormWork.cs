@@ -40,5 +40,10 @@ namespace MenegerView
             this.Hide();
             formusers.ShowDialog();
         }
+
+        private void занятыеМестToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Dal;
+using DocumentFormat.OpenXml.Bibliography;
 using MenegerView.Models.Main;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,10 @@ namespace MenegerView
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            
+            Guid guid = Guid.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            FormRooms formrooms = new FormRooms(guid);
+            this.Hide();
+            formrooms.ShowDialog();
         }
     }
 }
