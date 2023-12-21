@@ -16,8 +16,9 @@ using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using Microsoft.Office.Interop.Word;
-using Application = Microsoft.Office.Interop.Word.Application;
+using System.Xml.Linq;
+using System.Xml;
+using Aspose.Words;
 
 
 namespace MenegerView
@@ -100,56 +101,47 @@ namespace MenegerView
             context.Checkins.Add(checkin);
             context.SaveChanges();
 
-            // Путь к шаблону документа
-            string templatePath = @"..\\курсоваяРабота\\шаблон.doc";
+            string templateFilePath = "D:\\курсоваяРабота\\шаблон.doc";
+            string outputFolderPath = "D:\\курсоваяРабота\\квитанции";
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("ФИО", textBoxFIO.Text);
+            double number = double.Parse(textBoxSum.Text);
+            int integerPart = (int)number;
+            int fractionalPart = (int)((number - integerPart)*100);
+            data.Add("Рубли", integerPart.ToString());
+            data.Add("Копейки", fractionalPart.ToString());
+            data.Add("Год", DateTime.Today.Year.ToString());
+            data.Add("Месяц", DateTime.Today.Month.ToString());
+            data.Add("День", DateTime.Today.Day.ToString());
 
-            // Путь к сохраняемому документу
-            string savePath = @"..\\";
-
-            // Создание объекта приложения Word
-            Application wordApp = new Application();
-
-            // Открытие шаблона документа
-            Document doc = wordApp.Documents.Open(templatePath);
-
-            // Замена данных в закладке
-            int rubls = (int)Convert.ToDouble(textBoxSum.Text);
-            double kops = Convert.ToDouble(textBoxSum.Text) - rubls;
-            kops = Math.Round(kops, 2);
-            ReplaceBookmark(doc, "ФИО", textBoxFIO.Text);
-            ReplaceBookmark(doc, "Рубли", rubls.ToString());
-            ReplaceBookmark(doc, "Копейки", kops.ToString());
-            ReplaceBookmark(doc, "День", DateTime.Today.Day.ToString());
-            ReplaceBookmark(doc, "Месяц", DateTime.Today.Month.ToString());
-            ReplaceBookmark(doc, "Год", DateTime.Today.Year.ToString());
-
-            // Сохранение документа
-            doc.SaveAs2(savePath);
-
-            // Закрытие документа и приложения Word
-            doc.Close();
-            wordApp.Quit();
+            FillAndSaveTemplate(templateFilePath, outputFolderPath,  data, textBoxFIO.Text);
 
             MessageBox.Show("Успешно", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Hide();
+            FormWork formwork = new FormWork();
+            formwork.ShowDialog();
+
         }
 
-        static void ReplaceBookmark(Document doc, string bookmarkName, string replacementText)
+        public void FillAndSaveTemplate(string templateFilePath, string outputFolderPath, Dictionary<string, string> data, string name)
         {
-            if (doc.Bookmarks.Exists(bookmarkName))
+            // Загружаем документ Word из файла шаблона
+            Document doc = new Document(templateFilePath);
+
+            // Заполняем места, где стоят закладки, значениями из словаря
+            foreach (KeyValuePair<string, string> entry in data)
             {
-                // Получение закладки
-                Bookmark bookmark = doc.Bookmarks[bookmarkName];
-
-                // Удаление содержимого закладки
-                bookmark.Range.Delete();
-
-                // Вставка нового текста в закладку
-                bookmark.Range.InsertAfter(replacementText);
-
-                // Добавление закладки вновь вставленному тексту
-                doc.Bookmarks.Add(bookmarkName, bookmark.Range);
+                Bookmark bookmark = doc.Range.Bookmarks[entry.Key];
+                if (bookmark != null)
+                {
+                    bookmark.Text = entry.Value;
+                }
             }
+
+            string outputFileName = $"{DateTime.Now:yyyy-MM-dd} {name} .docx";
+
+            // Сохраняем заполненный файл в указанной папке с уникальным именем
+            doc.Save(System.IO.Path.Combine(outputFolderPath, outputFileName));
         }
 
 
