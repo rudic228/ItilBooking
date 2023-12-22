@@ -79,7 +79,7 @@ namespace MenegerView
             };
             book.BookingState = Dal.Enums.BookingState.Chekin;
             context.Checkins.Add(frombook);
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         private void FormBook_Load(object sender, EventArgs e)

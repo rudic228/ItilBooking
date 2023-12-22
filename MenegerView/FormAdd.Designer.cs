@@ -46,6 +46,8 @@
             groupBox1 = new GroupBox();
             buttonAdd = new Button();
             buttonBack = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -195,7 +197,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(12, 273);
+            buttonAdd.Location = new Point(11, 273);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(279, 27);
             buttonAdd.TabIndex = 16;
@@ -205,12 +207,22 @@
             // 
             // buttonBack
             // 
-            buttonBack.Location = new Point(12, 306);
+            buttonBack.Location = new Point(11, 306);
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(279, 27);
             buttonBack.TabIndex = 17;
             buttonBack.Text = "Отмена";
             buttonBack.UseVisualStyleBackColor = true;
+            buttonBack.Click += buttonBack_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(297, 38);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(286, 295);
+            dataGridView1.TabIndex = 19;
             // 
             // FormAdd
             // 
@@ -218,7 +230,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(303, 338);
+            ClientSize = new Size(595, 341);
+            Controls.Add(dataGridView1);
             Controls.Add(buttonBack);
             Controls.Add(buttonAdd);
             Controls.Add(dateTimePickerEnd);
@@ -239,6 +252,7 @@
             Controls.Add(groupBox1);
             Name = "FormAdd";
             Text = "Заселение";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -263,5 +277,7 @@
         private GroupBox groupBox1;
         private Button buttonAdd;
         private Button buttonBack;
+        private Button buttonCheck;
+        private DataGridView dataGridView1;
     }
 }

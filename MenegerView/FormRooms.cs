@@ -32,20 +32,19 @@ namespace MenegerView
         }
         private void LoadData()
         {
-            var unbooked = context.Rooms
-                .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today))
+            var rooms = context.Rooms
                 .ToList();
 
-            if (unbooked == null)
+            if (rooms == null)
             {
-                MessageBox.Show("На сегодня нет свободных номеров", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Нету ни одной комнаты с базе", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormUsers formuser = new FormUsers();
                 this.Hide();
                 formuser.ShowDialog();
             }
             else
             {
-                dataGridView1.DataSource = unbooked;
+                dataGridView1.DataSource = rooms;
                 dataGridView1.Columns[0].Visible = false;
             }
 
@@ -74,18 +73,10 @@ namespace MenegerView
         private void comboBoxFloor_SelectedIndexChanged(object sender, EventArgs e)
         {
             var unbooked = context.Rooms
-                .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today) && r.Level.ToString() == comboBoxFloor.SelectedItem.ToString())
+                .Where(r => r.Level.ToString() == comboBoxFloor.SelectedItem.ToString())
                 .ToList();
-            if (unbooked.Count == 0)
-            {
-                MessageBox.Show("На данном этаже нету свободных номеров", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData();
-            }
-            else
-            {
                 dataGridView1.DataSource = unbooked;
                 dataGridView1.Columns[0].Visible = false;
-            }
         }
 
         private void buttonClear_Click(object sender, EventArgs e)

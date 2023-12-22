@@ -19,6 +19,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Xml.Linq;
 using System.Xml;
 using Aspose.Words;
+using DocumentFormat.OpenXml.Office.CustomUI;
 
 
 namespace MenegerView
@@ -28,6 +29,7 @@ namespace MenegerView
         Context context = new Context();
         Guid nameId;
         Guid roomId;
+        List<Tuple<DateTime, DateTime>> storage = new List<Tuple<DateTime, DateTime>>();
         public FormAdd(Guid NameId, Guid RoomId)
         {
             InitializeComponent();
@@ -45,6 +47,23 @@ namespace MenegerView
             textBoxFloor.Text = room.Level.ToString();
             textBoxPrice.Text = room.Price.ToString();
             textBoxRoom.Text = room.Number.ToString();
+
+            var booking = context.Bookings
+                .Where(x => x.RoomId == roomId);
+            var checkin = context.Checkins
+                .Where(x => x.RoomId == roomId);
+
+            foreach (var check in checkin)
+            {
+                storage.Add(new Tuple<DateTime, DateTime>(check.BeginCheckinDate, check.EndCheckinDate));
+            }
+            foreach (var book in booking)
+            {
+                storage.Add(new Tuple<DateTime, DateTime>(book.BeginBookingDate, book.EndBookingDate));
+            }
+            dataGridView1.DataSource = storage;
+            dataGridView1.Columns[0].HeaderText = "Дата начала";
+            dataGridView1.Columns[1].HeaderText = "Дата конца";
         }
 
         private void ChangeDate()
@@ -89,6 +108,16 @@ namespace MenegerView
                 return;
             }
 
+            foreach (var tuple in storage)
+            {
+                if ((dateTimePickerStart.Value >= tuple.Item1 && dateTimePickerStart.Value <= tuple.Item2) || (dateTimePickerEnd.Value >= tuple.Item1 && dateTimePickerEnd.Value <= tuple.Item2))
+                {
+                    MessageBox.Show("В данные период нельзя заселить, так как комната уже занята", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+            }
+
             Checkin checkin = new Checkin
             {
                 Id = new Guid(),
@@ -99,7 +128,7 @@ namespace MenegerView
                 UserId = nameId
             };
             context.Checkins.Add(checkin);
-            context.SaveChanges();
+            context.SaveChangesAsync();
 
             string templateFilePath = "D:\\курсоваяРабота\\шаблон.doc";
             string outputFolderPath = "D:\\курсоваяРабота\\квитанции";
@@ -107,14 +136,14 @@ namespace MenegerView
             data.Add("ФИО", textBoxFIO.Text);
             double number = double.Parse(textBoxSum.Text);
             int integerPart = (int)number;
-            int fractionalPart = (int)((number - integerPart)*100);
+            int fractionalPart = (int)((number - integerPart) * 100);
             data.Add("Рубли", integerPart.ToString());
             data.Add("Копейки", fractionalPart.ToString());
             data.Add("Год", DateTime.Today.Year.ToString());
             data.Add("Месяц", DateTime.Today.Month.ToString());
             data.Add("День", DateTime.Today.Day.ToString());
 
-            FillAndSaveTemplate(templateFilePath, outputFolderPath,  data, textBoxFIO.Text);
+            FillAndSaveTemplate(templateFilePath, outputFolderPath, data, textBoxFIO.Text);
 
             MessageBox.Show("Успешно", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Hide();
@@ -144,6 +173,11 @@ namespace MenegerView
             doc.Save(System.IO.Path.Combine(outputFolderPath, outputFileName));
         }
 
-
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            FormRooms formrooms = new FormRooms(nameId);
+            this.Hide();
+            formrooms.ShowDialog();
+        }
     }
 }
