@@ -14,6 +14,8 @@ namespace Dal.EfExtensions
 {
     public static class IQueryableExtension
     {
+        //не знаю зачем это писал, но выглядит круто
+        //пока оставлю, мб найду применение
         public static IQueryable<TEntity> StringFilter<TEntity>(this IQueryable<TEntity> qList, string propertyName, string operation, string valueConst)
         {
             var property = typeof(TEntity)?.GetProperty(propertyName);
