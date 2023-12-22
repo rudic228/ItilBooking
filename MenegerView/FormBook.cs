@@ -37,14 +37,28 @@ namespace MenegerView
                 })
                 .Where(x => x.EndCheckinDate < DateTime.Today)
                 .ToList();
+            dataGridView1.DataSource = book;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Width = 250;
         }
 
         private void buttonGet_Click(object sender, EventArgs e)
         {
-            var book = context.Users
-                .Where(x => x.Phone.Contains(textBox1.Text))
+            var book = context.Bookings
+                .Select(x => new CheckInOldViewModel()
+                {
+                    BeginCheckinDate = x.BeginBookingDate,
+                    RoomNumber = x.Room.Number,
+                    Id = x.Id,
+                    EndCheckinDate = x.EndBookingDate,
+                    Price = x.Price,
+                    FullName = x.User.FullName
+                })
+                .Where(x => x.EndCheckinDate < DateTime.Today && x.FullName.Contains(textBox1.Text))
                 .ToList();
             dataGridView1.DataSource = book;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Width = 250;
         }
 
         private void button1_Click(object sender, EventArgs e)

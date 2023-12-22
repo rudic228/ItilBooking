@@ -30,13 +30,9 @@
         {
             dataGridView1 = new DataGridView();
             textBoxName = new TextBox();
-            groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            textBoxRoom = new TextBox();
-            buttonFiltr = new Button();
+            label1 = new Label();
+            buttonClear = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -50,75 +46,55 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(6, 15);
+            textBoxName.Location = new Point(640, 40);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(148, 23);
+            textBoxName.Size = new Size(149, 23);
             textBoxName.TabIndex = 1;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             // 
-            // groupBox1
+            // label1
             // 
-            groupBox1.Controls.Add(textBoxName);
-            groupBox1.Location = new Point(640, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(157, 44);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "ФИО";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(649, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(140, 25);
+            label1.TabIndex = 2;
+            label1.Text = "Поиск по ФИО";
             // 
-            // groupBox2
+            // buttonClear
             // 
-            groupBox2.Controls.Add(textBoxRoom);
-            groupBox2.Location = new Point(640, 56);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(157, 45);
-            groupBox2.TabIndex = 3;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Комната";
-            // 
-            // textBoxRoom
-            // 
-            textBoxRoom.Location = new Point(6, 16);
-            textBoxRoom.Name = "textBoxRoom";
-            textBoxRoom.Size = new Size(142, 23);
-            textBoxRoom.TabIndex = 0;
-            // 
-            // buttonFiltr
-            // 
-            buttonFiltr.Location = new Point(640, 107);
-            buttonFiltr.Name = "buttonFiltr";
-            buttonFiltr.Size = new Size(154, 23);
-            buttonFiltr.TabIndex = 5;
-            buttonFiltr.Text = "Фильтрация";
-            buttonFiltr.UseVisualStyleBackColor = true;
-            buttonFiltr.Click += buttonFiltr_Click;
+            buttonClear.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonClear.Location = new Point(640, 69);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(148, 32);
+            buttonClear.TabIndex = 3;
+            buttonClear.Text = "Очистить поиск";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
             // 
             // FormCheckIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(buttonFiltr);
-            Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(buttonClear);
+            Controls.Add(label1);
+            Controls.Add(textBoxName);
             Controls.Add(dataGridView1);
             Name = "FormCheckIn";
             Text = "Заселенные";
             Load += FormCheckIn_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
         private TextBox textBoxName;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private TextBox textBoxRoom;
-        private Button buttonFiltr;
+        private Label label1;
+        private Button buttonClear;
     }
 }

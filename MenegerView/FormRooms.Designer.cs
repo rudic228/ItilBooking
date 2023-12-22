@@ -32,6 +32,7 @@
             comboBoxFloor = new ComboBox();
             buttonNext = new Button();
             buttonBack = new Button();
+            buttonClear = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -49,13 +50,14 @@
             comboBoxFloor.FormattingEnabled = true;
             comboBoxFloor.Location = new Point(527, 12);
             comboBoxFloor.Name = "comboBoxFloor";
-            comboBoxFloor.Size = new Size(121, 23);
+            comboBoxFloor.Size = new Size(127, 23);
             comboBoxFloor.TabIndex = 1;
             comboBoxFloor.Text = "Этаж";
             comboBoxFloor.SelectedIndexChanged += comboBoxFloor_SelectedIndexChanged;
             // 
             // buttonNext
             // 
+            buttonNext.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttonNext.Location = new Point(527, 326);
             buttonNext.Name = "buttonNext";
             buttonNext.Size = new Size(127, 43);
@@ -66,6 +68,7 @@
             // 
             // buttonBack
             // 
+            buttonBack.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttonBack.Location = new Point(527, 375);
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(127, 43);
@@ -74,11 +77,23 @@
             buttonBack.UseVisualStyleBackColor = true;
             buttonBack.Click += buttonBack_Click;
             // 
+            // buttonClear
+            // 
+            buttonClear.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonClear.Location = new Point(527, 41);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(127, 44);
+            buttonClear.TabIndex = 4;
+            buttonClear.Text = "Очистить поиск";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += buttonClear_Click;
+            // 
             // FormRooms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(666, 441);
+            Controls.Add(buttonClear);
             Controls.Add(buttonBack);
             Controls.Add(buttonNext);
             Controls.Add(comboBoxFloor);
@@ -96,5 +111,6 @@
         private ComboBox comboBoxFloor;
         private Button buttonNext;
         private Button buttonBack;
+        private Button buttonClear;
     }
 }

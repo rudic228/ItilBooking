@@ -46,14 +46,28 @@ namespace MenegerView
             LoadData();
         }
 
-        private void buttonFiltr_Click(object sender, EventArgs e)
+        private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-    //        var check = context.Checkins.AsEnumerable()
-    //        .Select(x => new CheckInOldViewModel())
-    //        .Where(x => (string.IsNullOrEmpty(textBoxName.Text) || x.FullName == textBoxName.Text)
-    //        && (string.IsNullOrEmpty(textBoxName.Text) || x.RoomNumber.ToString() == textBoxName.Text))
-    //.ToList();
-    //        dataGridView1.DataSource = check;
+            var check = context.Checkins
+               .Select(x => new CheckInOldViewModel()
+               {
+                   BeginCheckinDate = x.BeginCheckinDate,
+                   RoomNumber = x.Room.Number,
+                   Id = x.Id,
+                   EndCheckinDate = x.EndCheckinDate,
+                   Price = x.Price,
+                   FullName = x.User.FullName
+               })
+               .Where(x => x.EndCheckinDate >= DateTime.Today && x.FullName.Contains(textBoxName.Text))
+               .ToList();
+            dataGridView1.DataSource = check;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Width = 250;
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

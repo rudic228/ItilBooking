@@ -36,19 +36,19 @@ namespace MenegerView
                 .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today))
                 .ToList();
 
-            if(unbooked == null)
+            if (unbooked == null)
             {
                 MessageBox.Show("На сегодня нет свободных номеров", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormUsers formuser = new FormUsers();
                 this.Hide();
                 formuser.ShowDialog();
             }
-            else 
+            else
             {
                 dataGridView1.DataSource = unbooked;
                 dataGridView1.Columns[0].Visible = false;
             }
-            
+
         }
 
         private void FormRooms_Load(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace MenegerView
             var unbooked = context.Rooms
                 .Where(r => !context.Bookings.Any(b => (b.RoomId == r.Id) && b.EndBookingDate >= DateTime.Today) && !context.Checkins.Any(c => c.RoomId == r.Id && c.EndCheckinDate >= DateTime.Today) && r.Level.ToString() == comboBoxFloor.SelectedItem.ToString())
                 .ToList();
-            if(unbooked.Count == 0)
+            if (unbooked.Count == 0)
             {
                 MessageBox.Show("На данном этаже нету свободных номеров", "Внимаение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
@@ -86,6 +86,11 @@ namespace MenegerView
                 dataGridView1.DataSource = unbooked;
                 dataGridView1.Columns[0].Visible = false;
             }
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

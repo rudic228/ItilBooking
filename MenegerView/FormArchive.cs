@@ -43,5 +43,29 @@ namespace MenegerView
         {
             LoadData();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var search = context.Checkins
+           .Select(x => new CheckInOldViewModel()
+           {
+               BeginCheckinDate = x.BeginCheckinDate,
+               RoomNumber = x.Room.Number,
+               Id = x.Id,
+               EndCheckinDate = x.EndCheckinDate,
+               Price = x.Price,
+               FullName = x.User.FullName
+           })
+           .Where(x => x.EndCheckinDate < DateTime.Today && x.FullName.Contains(textBox1.Text))
+           .ToList();
+            dataGridView1.DataSource = search;
+            dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[1].Width = 250;
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
     }
 }
