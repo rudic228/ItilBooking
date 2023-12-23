@@ -1,5 +1,6 @@
 ﻿using Dal;
 using Dal.Entities;
+//using DocumentFormat.OpenXml.Wordprocessing;
 using MenegerView.Word;
 using System;
 using System.Collections.Generic;
@@ -15,111 +16,168 @@ using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Xml.Linq;
+using System.Xml;
+using Aspose.Words;
+using DocumentFormat.OpenXml.Office.CustomUI;
+
 
 namespace MenegerView
 {
     public partial class FormAdd : Form
     {
-        public string name;
         Context context = new Context();
-        public FormAdd(bool New)
+        Guid nameId;
+        Guid roomId;
+        List<Tuple<DateTime, DateTime>> storage = new List<Tuple<DateTime, DateTime>>();
+        public FormAdd(Guid NameId, Guid RoomId)
         {
             InitializeComponent();
-            Context context = new Context();
-            var bookings = context.Bookings.ToList();
-            var unbooked = context.Rooms
-                .Where(r => !context.Bookings.Any(b => b.RoomId == r.Id) && !context.Checkins.Any(c => c.RoomId == r.Id))
-                .Select(r => r.Number)
-                .ToList();
-            foreach (var room in unbooked)
+            nameId = NameId;
+            roomId = RoomId;
+
+            var user = context.Users
+                .Where(u => u.Id == NameId)
+                .FirstOrDefault();
+
+            var room = context.Rooms
+                .Where(u => u.Id == RoomId)
+                .FirstOrDefault();
+            textBoxFIO.Text = user.FullName;
+            textBoxFloor.Text = room.Level.ToString();
+            textBoxPrice.Text = room.Price.ToString();
+            textBoxRoom.Text = room.Number.ToString();
+
+            var booking = context.Bookings
+                .Where(x => x.RoomId == roomId);
+            var checkin = context.Checkins
+                .Where(x => x.RoomId == roomId);
+
+            foreach (var check in checkin)
             {
-                comboBoxNumber.Items.Add(room);
+                storage.Add(new Tuple<DateTime, DateTime>(check.BeginCheckinDate, check.EndCheckinDate));
             }
-            if (New == false)
+            foreach (var book in booking)
             {
-                comboBoxFIO.Items.Clear();
-                foreach (var book in bookings)
-                {
-                    User user = context.Users
-                        .Where(x => x.Id == book.UserId)
-                        .FirstOrDefault();
-                    comboBoxFIO.Items.Add(user.FullName);
-                }
+                storage.Add(new Tuple<DateTime, DateTime>(book.BeginBookingDate, book.EndBookingDate));
             }
+            dataGridView1.DataSource = storage;
+            dataGridView1.Columns[0].HeaderText = "Дата начала";
+            dataGridView1.Columns[1].HeaderText = "Дата конца";
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
+        private void ChangeDate()
         {
-
-            if (dateTimePickerEnd.Value <= DateTime.Today)
+            if (dateTimePickerStart.Value > dateTimePickerEnd.Value)
             {
-                MessageBox.Show("Дата окончания меньше реальной даты", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Дата начала не может быть больше конечной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (comboBoxFIO.SelectedIndex == -1 && textBoxSum == null && comboBoxNumber.SelectedIndex == -1)
+            if (dateTimePickerStart.Value == dateTimePickerEnd.Value)
             {
-                MessageBox.Show("Не выбран не один из параметор", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Дата начала не может быть равна конечной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int start = dateTimePickerStart.Value.Day;
+            int end = dateTimePickerEnd.Value.Day;
+            textBoxSum.Text = (Convert.ToDecimal(textBoxPrice.Text) * (end - start)).ToString();
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeDate();
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            ChangeDate();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            if (dateTimePickerStart.Value > dateTimePickerEnd.Value)
+            {
+                MessageBox.Show("Дата начала не может быть больше конечной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (dateTimePickerEnd.Value < dateTimePickerStart.Value)
+            if (dateTimePickerStart.Value == dateTimePickerEnd.Value)
             {
-                MessageBox.Show("Дата начала не может быть больше даты окончания", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Дата начала не может быть равна конечной", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Room room = context.Rooms
-                .Where(x => x.Number.ToString() == comboBoxNumber.SelectedItem.ToString())
-                .FirstOrDefault();
-            if(room == null)
+            foreach (var tuple in storage)
             {
-                MessageBox.Show("Комната не найдена", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                if ((dateTimePickerStart.Value >= tuple.Item1 && dateTimePickerStart.Value <= tuple.Item2) || (dateTimePickerEnd.Value >= tuple.Item1 && dateTimePickerEnd.Value <= tuple.Item2))
+                {
+                    MessageBox.Show("В данные период нельзя заселить, так как комната уже занята", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            User user = context.Users
-                 .Where(x => x.FullName == comboBoxFIO.SelectedItem.ToString())
-                 .FirstOrDefault();
-            if (user == null)
-            {
-                MessageBox.Show("Человек не найден", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            DateTime dt1, dt2;
-            TimeSpan delta;
-            dt1 = dateTimePickerStart.Value.Date;
-            dt2 = dateTimePickerEnd.Value.Date;
-            delta = dt2 - dt1;
 
             Checkin checkin = new Checkin
             {
                 Id = new Guid(),
-                RoomId = room.Id,
+                RoomId = roomId,
                 BeginCheckinDate = dateTimePickerStart.Value,
                 EndCheckinDate = dateTimePickerEnd.Value,
-                Price = Convert.ToDecimal(textBoxSum.Text) * delta.Days,
-                UserId = user.Id
+                Price = Convert.ToDecimal(textBoxSum.Text),
+                UserId = nameId
             };
-
             context.Checkins.Add(checkin);
-            context.SaveChanges();
+            context.SaveChangesAsync();
 
-            ToWord.ExportData(comboBoxFIO.Text, (Convert.ToDecimal(textBoxSum.Text) * delta.Days).ToString(), dateTimePickerStart.Value.ToString(), dateTimePickerEnd.Value.ToString());
+            string templateFilePath = "D:\\курсоваяРабота\\шаблон.doc";
+            string outputFolderPath = "D:\\курсоваяРабота\\квитанции";
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            data.Add("ФИО", textBoxFIO.Text);
+            double number = double.Parse(textBoxSum.Text);
+            int integerPart = (int)number;
+            int fractionalPart = (int)((number - integerPart) * 100);
+            data.Add("Рубли", integerPart.ToString());
+            data.Add("Копейки", fractionalPart.ToString());
+            data.Add("Год", DateTime.Today.Year.ToString());
+            data.Add("Месяц", DateTime.Today.Month.ToString());
+            data.Add("День", DateTime.Today.Day.ToString());
+
+            FillAndSaveTemplate(templateFilePath, outputFolderPath, data, textBoxFIO.Text);
 
             MessageBox.Show("Успешно", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Hide();
+            FormWork formwork = new FormWork();
+            formwork.ShowDialog();
+
         }
 
-        private void buttonCheck_Click(object sender, EventArgs e)
+        public void FillAndSaveTemplate(string templateFilePath, string outputFolderPath, Dictionary<string, string> data, string name)
         {
-            MessageBox.Show("Тут открывается форма отчета(чека)", "Отчет", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Загружаем документ Word из файла шаблона
+            Document doc = new Document(templateFilePath);
+
+            // Заполняем места, где стоят закладки, значениями из словаря
+            foreach (KeyValuePair<string, string> entry in data)
+            {
+                Bookmark bookmark = doc.Range.Bookmarks[entry.Key];
+                if (bookmark != null)
+                {
+                    bookmark.Text = entry.Value;
+                }
+            }
+
+            string outputFileName = $"{DateTime.Now:yyyy-MM-dd} {name} .docx";
+
+            // Сохраняем заполненный файл в указанной папке с уникальным именем
+            doc.Save(System.IO.Path.Combine(outputFolderPath, outputFileName));
         }
 
-        private void comboBoxNumber_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-            Room room = context.Rooms
-                .Where(x=>x.Number.ToString()==comboBoxNumber.SelectedItem.ToString())
-                .FirstOrDefault();
-            textBoxSum.Text = room.Price.ToString();
+            FormRooms formrooms = new FormRooms(nameId);
+            this.Hide();
+            formrooms.ShowDialog();
         }
     }
 }
