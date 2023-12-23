@@ -87,7 +87,7 @@ namespace ItilBooking.Controllers
             var userByPhone = await context.Users
                 .AsNoTracking()
                 .Select(x => x.Phone)
-                .FirstOrDefaultAsync(x => x == model.Phone);
+                .FirstOrDefaultAsync(x => x == phone);
 
             if (userByPhone is not null)
             {
@@ -157,7 +157,8 @@ namespace ItilBooking.Controllers
                 .Select(x => new
                 {
                     x.Login,
-                    x.PasswordHash
+                    x.PasswordHash,
+                    x.Id
                 })
                 .FirstOrDefaultAsync(x => x.Login == login);
 
@@ -175,11 +176,13 @@ namespace ItilBooking.Controllers
 
             var claims = new List<Claim>
                 {
-                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login)
+                    new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id.ToString())
                 };
             result.Identity =
             new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
+
+            result.IsSuccses = true;
             return result;
         }
 

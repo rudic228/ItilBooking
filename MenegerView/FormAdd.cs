@@ -118,6 +118,25 @@ namespace MenegerView
 
             }
 
+            var room = context.Rooms
+                .FirstOrDefault(x => x.Id == roomId);
+
+            if(room is null) 
+            {
+                MessageBox.Show($"Номер не найден: {roomId}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(!int.TryParse(textBoxNumberofPlace.Text, out int numberOfPlace))
+            {
+                MessageBox.Show($"Некорректное значение количества мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if(room.NumberOfBeds < numberOfPlace)
+            {
+                MessageBox.Show($"Количество заселенных не может быть больше количества мест", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Checkin checkin = new Checkin
             {
                 Id = new Guid(),
@@ -130,8 +149,8 @@ namespace MenegerView
             context.Checkins.Add(checkin);
             context.SaveChangesAsync();
 
-            string templateFilePath = "D:\\курсоваяРабота\\шаблон.doc";
-            string outputFolderPath = "D:\\курсоваяРабота\\квитанции";
+            string templateFilePath = @"C:\Users\zheny\Desktop\шарага\4 курс\ПИ\Курсач\ItilBooking\шаблон.doc";
+            string outputFolderPath = "C:\\Users\\zheny\\Desktop\\шарага\\4 курс\\ПИ\\Курсач\\ItilBooking\\квитанции";
             Dictionary<string, string> data = new Dictionary<string, string>();
             data.Add("ФИО", textBoxFIO.Text);
             double number = double.Parse(textBoxSum.Text);

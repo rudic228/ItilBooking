@@ -16,7 +16,7 @@ namespace Dal.Entities
 
         public decimal Price { get; set; }
 
-        public BookingState BookingState { get; set; }
+        public BookingState? BookingState { get; set; }
 
         public Guid UserId { get; set; }
 

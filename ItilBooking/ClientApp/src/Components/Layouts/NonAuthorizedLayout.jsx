@@ -13,24 +13,20 @@ const NonAuthorizedLayout = ({ children }) => {
                     theme="dark"
                     mode="horizontal"
                 >
-                    <Menu.Item key="1">
-                        <span>Home</span>
-                        <Link to="/" />
-                    </Menu.Item>
                     <Menu.Item key="2">
-                        <span>About</span>
+                        <span>О приложении</span>
                         <Link to="/about" />
                     </Menu.Item>
                     <Menu.Item key="3">
-                        <span>Login</span>
+                        <span>Авторизация</span>
                         <Link to="/login" />
                     </Menu.Item>
                     <Menu.Item key="4">
-                        <span>Rooms</span>
+                        <span>Номера</span>
                         <Link to="/rooms" />
                     </Menu.Item>
                     <Menu.Item key="5">
-                        <span>Register</span>
+                        <span>Регистрация</span>
                         <Link to="/register" />
                     </Menu.Item>
                 </Menu>
@@ -38,7 +34,7 @@ const NonAuthorizedLayout = ({ children }) => {
             <Content className="site-layout" style={{ padding: '0 50px' }}>
                 {children}
             </Content>
-            <Footer style={{ textAlign: 'center' }}>InforceTestingApp</Footer>
+            <Footer style={{ textAlign: 'center' }}>Санаторий Итиль</Footer>
         </Layout>
     );
 }

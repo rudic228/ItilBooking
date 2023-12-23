@@ -28,8 +28,6 @@ namespace Dal.Configurations
 
             builder.Property(x => x.BookingState)
                 .HasConversion(new EnumToStringConverter<BookingState>());
-
-            builder.HasEnumStringValuesCheckConstraint(x => x.BookingState, new EnumToStringConverter<BookingState>());
         }
     }
 }

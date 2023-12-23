@@ -46,6 +46,12 @@ namespace MenegerView
             {
                 dataGridView1.DataSource = rooms;
                 dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].HeaderText = "Номер комнаты";
+                dataGridView1.Columns[2].HeaderText = "Кол-во кроватей";
+                dataGridView1.Columns[3].HeaderText = "Этаж";
+                dataGridView1.Columns[4].HeaderText = "Категория";
+                dataGridView1.Columns[5].HeaderText = "Площадь";
+                dataGridView1.Columns[6].HeaderText = "Цена";
             }
 
         }

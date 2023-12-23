@@ -12,6 +12,7 @@ const Register
         const [email, setEmail] = useState('');
         const [login, setLogin] = useState('');
         const [password, setPassword] = useState('');
+        const [errorMessage, setErrorMessage] = useState('');
 
         let navigate = useNavigate();
         return (
@@ -86,10 +87,11 @@ const Register
 
                 <Button type="primary" onClick={() => {
                     api.post('/account/register',
-                        {Name : name, Surname : surname, Patronymic : patronymic, Phone : phone, Email : email, Login: login, Password: password }).then((res) => { navigate('/login') }).catch((error) => { console.log(error) });
+                        {Name : name, Surname : surname, Patronymic : patronymic, Phone : phone, Email : email, Login: login, Password: password }).then((res) => { navigate('/login') }).catch((error) => { setErrorMessage(error.response.data) });
                 }} block style={{ marginTop: "5px" }}>
                     Register
                 </Button>
+                {errorMessage && <div className="error"> {errorMessage} </div>}
             </div>
         );
     }
