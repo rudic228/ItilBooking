@@ -11,17 +11,13 @@ const About = () => {
             marginTop: "50px",
             margin: "auto",
         }}>
-            <label>
-                This is Link Shortener app.
-                <br />You can use it to create short version of your URL.
-                <br />Login or Register to access the ability to create shortened links.
-            </label>
-
-            <Button type="primary" block onClick={() => {
-                api.get('/weatherforecast/test', { withCredentials: false }).then((res) => { alert("Внутри"); navigate('/login') }).catch((error) => { console.log(error) });
-            }} style={{ marginTop: "5px" }}>
-                TEST
-            </Button>
+            <h2>
+                Приложение разработал студент группы ИСЭбд-41 Миронов Евгений 
+                <br />
+                <br />
+                <br />
+                <br />Спасибо за внимание!!!
+            </h2>
         </div >
     );
 }

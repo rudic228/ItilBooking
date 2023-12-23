@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from "react
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import MainPage from "../MainPage/MainPage";
 import Details from "../Details/Details";
-import CreateLink from "../CreateLink/CreateLink";
+import CreateLink from "../CreateBooking/CreateBooking";
 import About from "../About/About";
 import { connect } from 'react-redux';
 import { logout } from '../../data/actionCreators/LoginActions';
@@ -19,31 +19,24 @@ const AuthorizedLayout = ({ children, logout }) => {
                     theme="dark"
                     mode="horizontal"
                 >
-                    <Menu.Item key="1">
-                        <span>Home</span>
-                        <Link to="/" />
-                    </Menu.Item>
                     <Menu.Item key="2">
-                        <span>About</span>
+                        <span>О приложении</span>
                         <Link to="/about" />
                     </Menu.Item>
-                    <Menu.Item key="3">
-                        <span>Create</span>
-                        <Link to="/create" />
-                    </Menu.Item>
                     <Menu.Item key="4">
-                        <span>Rooms</span>
-                        <Link to="/roomsList" />
+                        <span>Номера</span>
+                        <Link to="/rooms" />
                     </Menu.Item>
-                    <Menu.Item key="5" onClick={() => { logout(); }}>
-                        <span>Logout</span>
+                    <Menu.Item key="6">
+                        <span>Мои бронирования</span>
+                        <Link to="/bookings" />
                     </Menu.Item>
                 </Menu>
             </Header>
             <Content className="site-layout" style={{ padding: '0 50px' }}>
                 {children}
             </Content>
-            <Footer style={{ textAlign: 'center' }}>InforceTestingApp</Footer>
+            <Footer style={{ textAlign: 'center' }}>Санаторий Итиль</Footer>
         </Layout>
     );
 }

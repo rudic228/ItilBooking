@@ -10,6 +10,7 @@ const Login
 
         const [userName, setUserName] = useState('');
         const [password, setPassword] = useState('');
+        const [errorMessage, setErrorMessage] = useState('');
 
         let navigate = useNavigate();
         return (
@@ -25,12 +26,13 @@ const Login
                 />
                 <Input.Password onChange={(e) => { setPassword(e.target.value) }} placeholder="Input password" style={{ marginTop: "5px" }} />
 
-                <Button type="primary" block onClick={() => { login({ login : userName, password }) }} style={{ marginTop: "5px" }}>
+                <Button type="primary" block onClick={() => { login({ login : userName, password }).then((res) => navigate("/register")).catch((error) => { setErrorMessage(error.response.data) }) }} style={{ marginTop: "5px" }}>
                     LOGIN
                 </Button>
                 <Button type="primary" block style={{ marginTop: "5px" }} onClick={() => navigate("/register")}>
                     SIGN UP
                 </Button>
+                {errorMessage && <div className="error"> {errorMessage} </div>}
             </div >
         );
     }

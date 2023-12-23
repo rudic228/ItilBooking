@@ -1,8 +1,8 @@
 ﻿using Dal.Enums;
 
-namespace Dal.Entities
+namespace ItilBooking.Models.Room.Get
 {
-    public class Room
+    public class RoomViewModel
     {
         public Guid Id { get; set; }
 
@@ -12,14 +12,10 @@ namespace Dal.Entities
 
         public int Level { get; set; }
 
-        public RoomCategory Category {  get; set; }
+        public string Category { get; set; }
 
         public decimal Area { get; set; }
 
         public decimal Price { get; set; }
-
-        public List<Booking> Bookings { get; set; }
-
-        public List<Checkin> Checkins { get; set; }
     }
 }

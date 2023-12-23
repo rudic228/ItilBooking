@@ -14,7 +14,7 @@ namespace Dal
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ItilBooking;Username=postgres;Password=1111;Include Error Detail=true;");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ItilBooking;Username=postgres;Password=7076;Include Error Detail=true;");
 
             optionsBuilder.LogTo(DebugWrite);
         }

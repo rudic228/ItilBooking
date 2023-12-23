@@ -3,7 +3,7 @@ import { Routes, Route, useParams } from 'react-router-dom';
 import { Card } from 'antd';
 
 const Details = ({ }) => {
-    let { id } = useParams();
+    let { roomId } = useParams();
 
     const [item, setItem] = useState({});
 
