@@ -35,7 +35,7 @@ namespace MenegerView
                     Price = x.Price,
                     FullName = x.User.FullName
                 })
-                .Where(x => x.EndCheckinDate < DateTime.Today)
+                .Where(x => x.EndCheckinDate >= DateTime.Today)
                 .ToList();
             dataGridView1.DataSource = book;
             dataGridView1.Columns[0].Visible = false;
@@ -80,6 +80,7 @@ namespace MenegerView
             book.BookingState = Dal.Enums.BookingState.Chekin;
             context.Checkins.Add(frombook);
             context.SaveChangesAsync();
+            MessageBox.Show("Заселение произошло", "Успех!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void FormBook_Load(object sender, EventArgs e)

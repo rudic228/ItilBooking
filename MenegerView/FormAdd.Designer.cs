@@ -38,7 +38,6 @@
             textBoxPrice = new TextBox();
             label5 = new Label();
             textBoxSum = new TextBox();
-            label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             dateTimePickerStart = new DateTimePicker();
@@ -47,6 +46,10 @@
             buttonAdd = new Button();
             buttonBack = new Button();
             dataGridView1 = new DataGridView();
+            label9 = new Label();
+            label6 = new Label();
+            textBoxNumberofPlace = new TextBox();
+            groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -140,21 +143,11 @@
             textBoxSum.Size = new Size(188, 23);
             textBoxSum.TabIndex = 9;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(97, 160);
-            label6.Name = "label6";
-            label6.Size = new Size(120, 25);
-            label6.TabIndex = 10;
-            label6.Text = "Дата начала";
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(91, 162);
+            label7.Location = new Point(86, 196);
             label7.Name = "label7";
             label7.Size = new Size(120, 25);
             label7.TabIndex = 11;
@@ -164,7 +157,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(91, 216);
+            label8.Location = new Point(86, 250);
             label8.Name = "label8";
             label8.Size = new Size(110, 25);
             label8.TabIndex = 12;
@@ -172,7 +165,7 @@
             // 
             // dateTimePickerStart
             // 
-            dateTimePickerStart.Location = new Point(12, 190);
+            dateTimePickerStart.Location = new Point(0, 224);
             dateTimePickerStart.Name = "dateTimePickerStart";
             dateTimePickerStart.Size = new Size(279, 23);
             dateTimePickerStart.TabIndex = 13;
@@ -180,7 +173,7 @@
             // 
             // dateTimePickerEnd
             // 
-            dateTimePickerEnd.Location = new Point(12, 244);
+            dateTimePickerEnd.Location = new Point(6, 278);
             dateTimePickerEnd.Name = "dateTimePickerEnd";
             dateTimePickerEnd.Size = new Size(279, 23);
             dateTimePickerEnd.TabIndex = 14;
@@ -188,16 +181,22 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(textBoxNumberofPlace);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(dateTimePickerStart);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(dateTimePickerEnd);
+            groupBox1.Controls.Add(label7);
             groupBox1.Location = new Point(11, 9);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(280, 258);
+            groupBox1.Size = new Size(280, 304);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
             // buttonAdd
             // 
-            buttonAdd.Location = new Point(11, 273);
+            buttonAdd.Location = new Point(6, 316);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(279, 27);
             buttonAdd.TabIndex = 16;
@@ -207,7 +206,7 @@
             // 
             // buttonBack
             // 
-            buttonBack.Location = new Point(11, 306);
+            buttonBack.Location = new Point(6, 349);
             buttonBack.Name = "buttonBack";
             buttonBack.Size = new Size(279, 27);
             buttonBack.TabIndex = 17;
@@ -221,8 +220,35 @@
             dataGridView1.Location = new Point(297, 38);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(286, 295);
+            dataGridView1.Size = new Size(286, 338);
             dataGridView1.TabIndex = 19;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(355, 12);
+            label9.Name = "label9";
+            label9.Size = new Size(166, 25);
+            label9.TabIndex = 20;
+            label9.Text = "Занятые периоды";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(1, 170);
+            label6.Name = "label6";
+            label6.Size = new Size(70, 25);
+            label6.TabIndex = 21;
+            label6.Text = "Места:";
+            // 
+            // textBoxNumberofPlace
+            // 
+            textBoxNumberofPlace.Location = new Point(76, 170);
+            textBoxNumberofPlace.Name = "textBoxNumberofPlace";
+            textBoxNumberofPlace.Size = new Size(188, 23);
+            textBoxNumberofPlace.TabIndex = 21;
             // 
             // FormAdd
             // 
@@ -230,15 +256,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(595, 341);
+            ClientSize = new Size(595, 388);
+            Controls.Add(label9);
             Controls.Add(dataGridView1);
             Controls.Add(buttonBack);
             Controls.Add(buttonAdd);
-            Controls.Add(dateTimePickerEnd);
-            Controls.Add(dateTimePickerStart);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
             Controls.Add(textBoxSum);
             Controls.Add(label5);
             Controls.Add(textBoxPrice);
@@ -252,6 +274,8 @@
             Controls.Add(groupBox1);
             Name = "FormAdd";
             Text = "Заселение";
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -269,7 +293,6 @@
         private TextBox textBoxPrice;
         private Label label5;
         private TextBox textBoxSum;
-        private Label label6;
         private Label label7;
         private Label label8;
         private DateTimePicker dateTimePickerStart;
@@ -279,5 +302,8 @@
         private Button buttonBack;
         private Button buttonCheck;
         private DataGridView dataGridView1;
+        private Label label9;
+        private TextBox textBoxNumberofPlace;
+        private Label label6;
     }
 }
