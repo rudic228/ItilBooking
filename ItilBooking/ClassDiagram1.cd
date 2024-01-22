@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ItilBooking.Controllers.AccountController">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAAAAAAAABAAAAAAAAAAABAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Controllers.RoomsController">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Controllers\RoomsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Infrastructure.Validators.EmailValidator">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Validators\EmailValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Infrastructure.Validators.PasswordValidator">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\Validators\PasswordValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Infrastructure.Validators.PhoneValidator">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Infrastructure\Validators\PhoneValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Project1.Infrastructure.AuthOptions">
+    <Position X="4.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQRAAAAAQAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructure\AuthOptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Models.Account.Login.LoginForm">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Models\Account\Login\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Models.Account.Register.RegisterForm">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAAAAAAAAAAAQABAAAAAACAAAQIAAAAAA=</HashCode>
+      <FileName>Models\Account\Register\RegisterForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Models.Account.AuthenticateResult">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\Account\AuthenticateResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Models.FilterModel">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAgAAAAAgABAAAAAAAEAAA=</HashCode>
+      <FileName>Models\FilterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ItilBooking.Controllers.BookingsController">
+    <Position X="8" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAABAAAAAAAAAAAGAAEAAAAAAAAAAAAI=</HashCode>
+      <FileName>Controllers\BookingsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

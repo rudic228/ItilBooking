@@ -27,12 +27,12 @@ const Login
                 <Input.Password onChange={(e) => { setPassword(e.target.value) }} placeholder="Input password" style={{ marginTop: "5px" }} />
 
                 <Button type="primary" block onClick={() => { login({ login : userName, password }).then((res) => navigate("/register")).catch((error) => { setErrorMessage(error.response.data) }) }} style={{ marginTop: "5px" }}>
-                    LOGIN
+                    ВОЙТИ
                 </Button>
                 <Button type="primary" block style={{ marginTop: "5px" }} onClick={() => navigate("/register")}>
-                    SIGN UP
+                    ЗАРЕГИСТРИРОВАТЬСЯ
                 </Button>
-                {errorMessage && <div className="error"> {errorMessage} </div>}
+                {errorMessage && <div className="error" style={{ color: "red" }}> {errorMessage} </div>}
             </div >
         );
     }

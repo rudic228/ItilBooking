@@ -1,10 +1,13 @@
 ﻿using Dal;
 using Dal.Entities;
+using Dal.Enums;
 using ItilBooking.Models.Booking.Create;
 using ItilBooking.Models.Booking.Get;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MailKit.Net.Smtp;
+using MimeKit;
 using System.Security.Claims;
 
 namespace ItilBooking.Controllers
@@ -45,6 +48,24 @@ namespace ItilBooking.Controllers
         public async Task<IActionResult> Get(
             Guid bookingId) 
         {
+            //Random rand = new Random();
+            //var bookings = new List<Booking>(100000);
+            //for(int i = 0; i < 100000; i++)
+            //{
+            //    bookings.Add(new Booking()
+            //    {
+            //        BeginBookingDate = DateTime.Now.AddDays(rand.Next(500)),
+            //        EndBookingDate = DateTime.Now.AddDays(rand.Next(500)),
+            //        BookingState = (BookingState)rand.Next(0, 1),
+            //        Id = Guid.NewGuid(),
+            //        Price = rand.Next(1000),
+            //        UserId = new Guid("934711d3-f145-4fdb-bc98-76d7651147e5"),
+            //        RoomId = new Guid("4a925d97-a5e0-4524-ad9f-56a4d5de356d"),
+            //    });
+            //}
+            //await context.BulkInsertAsync(bookings);
+            //await context.SaveChangesAsync();
+
             var booking = await context.Bookings
                 .Select(x => new BookingViewModel()
                 {
@@ -133,7 +154,23 @@ namespace ItilBooking.Controllers
             };
             context.Bookings.Add(booking);
 
+            var user = await context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user == null)
+            {
+                return BadRequest("Пользователь не найден");
+            }
+
+
             context.SaveChanges();
+
+            await SendEmailAsync(user.Email, "Номер забронирован", $"<h3>Вы успешно забронировали номер с {request.BeginBookingDate.ToShortDateString()} по {request.EndBookingDate.ToShortDateString()}</h3>" +
+                $"<br><p>тут должна быть верстка</p>");
+
+
+
 
             return Ok(booking.Id);
         }
@@ -153,6 +190,28 @@ namespace ItilBooking.Controllers
             context.SaveChanges();
 
             return Ok(bookingId);
+        }
+
+        public async Task SendEmailAsync(string email, string subject, string message)
+        {
+            var emailMessage = new MimeMessage();
+
+            emailMessage.From.Add(new MailboxAddress("Администрация сайта", "zhenya_mironov_92@list.ru"));
+            emailMessage.To.Add(new MailboxAddress("", email));
+            emailMessage.Subject = subject;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            {
+                Text = message
+            };
+
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync("smtp.mail.ru", 465, true);
+                await client.AuthenticateAsync("zhenya_mironov_92@list.ru", "39hwkJjaJC9YJDGPjZrc");
+                await client.SendAsync(emailMessage);
+
+                await client.DisconnectAsync(true);
+            }
         }
 
 

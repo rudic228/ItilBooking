@@ -89,9 +89,9 @@ const Register
                     api.post('/account/register',
                         {Name : name, Surname : surname, Patronymic : patronymic, Phone : phone, Email : email, Login: login, Password: password }).then((res) => { navigate('/login') }).catch((error) => { setErrorMessage(error.response.data) });
                 }} block style={{ marginTop: "5px" }}>
-                    Register
+                    Зарегистрироваться
                 </Button>
-                {errorMessage && <div className="error"> {errorMessage} </div>}
+                {errorMessage && <div className="error" style={{ color: "red" }}> {errorMessage} </div>}
             </div>
         );
     }

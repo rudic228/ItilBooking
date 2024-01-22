@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dal.Configurations.BookingConfiguration" BaseTypeListCollapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configurations\BookingConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Dal.Configurations.CheckinConfiguration" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configurations\CheckinConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Dal.Configurations.RoomConfiguration" BaseTypeListCollapsed="true">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configurations\RoomConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Dal.Configurations.UserConfiguration" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configurations\UserConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Dal.EfExtensions.DbSetExtension">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EfExtensions\DbSetExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.EfExtensions.EntityBuilderExtension">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EfExtensions\EntityBuilderExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.EfExtensions.IQueryableExtension">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAAAAAAAAABAAAAAAAAAAAABAAAAAABA=</HashCode>
+      <FileName>EfExtensions\IQueryableExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.EfExtensions.PropertyBuilderExtension">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EfExtensions\PropertyBuilderExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.Entities.Booking">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQDAAACAQAEAAIAABAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Booking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.Entities.Checkin">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADCAACAQAAAAAAABAAAAgAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Entities\Checkin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.Entities.Room">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAEAAAAAAAAAAAAABAAAAAQAACAA=</HashCode>
+      <FileName>Entities\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.Entities.User">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCACAAACAAAIAAAAAAAAQABAAAAAAAAAAQIAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dal.Context">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAQAgAAAAAAAQAAACEAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Dal.Enums.BookingState">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\BookingState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Dal.Enums.RoomCategory">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQgQAAAAAA=</HashCode>
+      <FileName>Enums\RoomCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

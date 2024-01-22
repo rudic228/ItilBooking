@@ -1,4 +1,6 @@
 ﻿using Dal;
+using Dal.Entities;
+using Dal.Enums;
 using MenegerView.Models.Main;
 using System;
 using System.Collections.Generic;
@@ -20,23 +22,40 @@ namespace MenegerView
             InitializeComponent();
         }
 
-        private void LoadData()
+        private async void LoadData()
         {
-            var oldcheck = context.Checkins
-                .Select(x => new CheckInOldViewModel()
+            Random rand = new Random();
+            var bookings = new List<Booking>(100000);
+            for (int i = 0; i < 100000; i++)
+            {
+                bookings.Add(new Booking()
                 {
-                    BeginCheckinDate = x.BeginCheckinDate,
-                    RoomNumber = x.Room.Number,
-                    Id = x.Id,
-                    EndCheckinDate = x.EndCheckinDate,
-                    Price = x.Price,
-                    FullName = x.User.FullName
-                })
-                .Where(x => x.EndCheckinDate < DateTime.Today)
-                .ToList();
-            dataGridView1.DataSource = oldcheck;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Width = 250;
+                    BeginBookingDate = DateTime.Now.AddDays(rand.Next(500)),
+                    EndBookingDate = DateTime.Now.AddDays(rand.Next(500)),
+                    BookingState = (BookingState)rand.Next(0, 1),
+                    Id = Guid.NewGuid(),
+                    Price = rand.Next(1, 1000),
+                    UserId = new Guid("934711d3-f145-4fdb-bc98-76d7651147e5"),
+                    RoomId = new Guid("4f448fd5-8142-fc64-1322-5d1496413d53"),
+                });
+            }
+            await context.AddRangeAsync(bookings).ConfigureAwait(false);
+            await context.SaveChangesAsync().ConfigureAwait(false);
+            //var oldcheck = context.Checkins
+            //    .Select(x => new CheckInOldViewModel()
+            //    {
+            //        BeginCheckinDate = x.BeginCheckinDate,
+            //        RoomNumber = x.Room.Number,
+            //        Id = x.Id,
+            //        EndCheckinDate = x.EndCheckinDate,
+            //        Price = x.Price,
+            //        FullName = x.User.FullName
+            //    })
+            //    .Where(x => x.EndCheckinDate < DateTime.Today)
+            //    .ToList();
+            //dataGridView1.DataSource = oldcheck;
+            //dataGridView1.Columns[0].Visible = false;
+            //dataGridView1.Columns[1].Width = 250;
         }
 
         private void FormArchive_Load(object sender, EventArgs e)

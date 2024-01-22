@@ -70,7 +70,7 @@ const Room = ({ item }) => {
                       
                 }}
             >Забронировать</Button>
-            {errorMessage && <div className="error"> {errorMessage} </div>}
+            {errorMessage && <div className="error" style={{ color: "red" }}> {errorMessage} </div>}
         </Card>
     );
 }

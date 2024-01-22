@@ -8,7 +8,7 @@
 
         public Room Room { get; set; }
 
-        public DateTime BeginCheckinDate { get; set; }
+        public DateTime BeginCheckinDate { get; set; } 
 
         public DateTime EndCheckinDate { get; set; }
 

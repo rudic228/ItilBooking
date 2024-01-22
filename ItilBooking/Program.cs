@@ -45,7 +45,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(corsPolicy, policy =>
     {
-        policy.WithOrigins("https://localhost:44442")
+        policy//.WithOrigins("https://localhost:44442")
+            .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -70,6 +71,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseCors(corsPolicy);
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -84,6 +86,5 @@ app.MapControllerRoute(
     pattern: "{controller}/{action=Index}/{id?}");
 
 app.MapFallbackToFile("index.html");
-app.UseCors(corsPolicy);
 
 app.Run();

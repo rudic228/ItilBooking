@@ -181,7 +181,6 @@ namespace ItilBooking.Controllers
             result.Identity =
             new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
                 ClaimsIdentity.DefaultRoleClaimType);
-
             result.IsSuccses = true;
             return result;
         }
